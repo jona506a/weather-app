@@ -8,12 +8,13 @@ const API_KEY = "6d4a8e50c5982fd7e008b1702ff5bc69";
 
 class App extends React.Component {
     state = {
-        temperature: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
-        error: undefined
+        temperature: "",
+        city: "",
+        country: "",
+        humidity: "",
+        description: "",
+        icon: "",
+        error: ""
     }
     getWeather = async (e) => {
         e.preventDefault();
@@ -29,15 +30,17 @@ class App extends React.Component {
                 country: data.sys.country,
                 humidity: data.main.humidity,
                 description: data.weather[0].description,
+                icon: data.weather[0].icon,
                 error: ""
             });
         }else {
             this.setState({
-                temperature: undefined,
-                city: undefined,
-                country: undefined,
-                humidity: undefined,
-                description: undefined,
+                temperature: "",
+                city: "",
+                country: "",
+                humidity: "",
+                description: "",
+                icon: "",
                 error: "PLEASE enter the values... 😿"
             });
         }
@@ -60,6 +63,7 @@ class App extends React.Component {
                                     country={this.state.country}
                                     humidity={this.state.humidity}
                                     description={this.state.description}
+                                    icon={this.state.icon}
                                     error={this.state.error}
                                     />
                                 </div>
